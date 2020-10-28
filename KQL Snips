@@ -1,0 +1,8 @@
+//
+// Pull the app name that generated that sentinel alert - can be run manually or include into a playbook
+SigninLogs
+//| where UserPrincipalName contains 'email.addy'
+| join (SecurityIncident)
+on $left.TimeGenerated == $right.FirstActivityTime
+//| project  AppDisplayName
+//=======================================================================================================
